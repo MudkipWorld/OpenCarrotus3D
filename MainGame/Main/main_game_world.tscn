@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn5r1dxubrcsa"]
+
+[ext_resource type="PackedScene" uid="uid://dgp10l27pqr3c" path="res://MainGame/Characters/Players/TestPlayer/place_holder_player.tscn" id="2_kco6u"]
+[ext_resource type="PackedScene" uid="uid://c51odn5m3dbom" path="res://MainGame/Maps/OpenCarrotusLevels/Level1/open_carrotus_lvl_1.tscn" id="2_srbi3"]
+[ext_resource type="PackedScene" uid="uid://df71fmmnvb6my" path="res://MainGame/UI/LevelUI/level_ui.tscn" id="3_iw8gm"]
+[ext_resource type="Script" path="res://MainGame/UI/LevelUI/level_ui.gd" id="4_c1yrl"]
+
+[node name="Main" type="Node3D"]
+
+[node name="PlaceHolderPlayer" parent="." instance=ExtResource("2_kco6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6952, 0.849327, 6.32827)
+
+[node name="CurrentLevel" type="Node3D" parent="."]
+
+[node name="OpenCarrotusLvl1" parent="CurrentLevel" instance=ExtResource("2_srbi3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.62336, 0)
+
+[node name="CanvasLevelUI" parent="." instance=ExtResource("3_iw8gm")]
+script = ExtResource("4_c1yrl")

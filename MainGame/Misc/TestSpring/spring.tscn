@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnxfcb70wbpou"]
+
+[ext_resource type="Script" path="res://MainGame/Misc/TestSpring/Spring.gd" id="1_nqerk"]
+[ext_resource type="Material" uid="uid://brbi6r4jbggsa" path="res://MainGame/Misc/TestSpring/Red.tres" id="2_erxb0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qfho5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frsda"]
+albedo_color = Color(0.603922, 0.588235, 0.627451, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q5ona"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cadyv"]
+
+[sub_resource type="Animation" id="Animation_qofml"]
+resource_name = "Bounce"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.18, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.274873, 0), Vector3(0, 0.177296, 0), Vector3(0, 0.425872, 0), Vector3(0, 0.274873, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Metal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.0615921, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Metal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.0601, 0.18, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 0.346603, 1), Vector3(1, 0.259965, 1), Vector3(1.21584, 0.259965, 1.21584), Vector3(0.957728, 0.382332, 0.957728), Vector3(1, 0.346603, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.18, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.55023, 0.103211, 1.55023), Vector3(1.99731, 0.103211, 1.99731), Vector3(1.52512, 0.103211, 1.52512), Vector3(1.55023, 0.103211, 1.55023)]
+}
+
+[sub_resource type="Animation" id="Animation_4lkcv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.274873, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Metal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Metal:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 0.346603, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Top:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.55023, 0.103211, 1.55023)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_te7hk"]
+_data = {
+"Bounce": SubResource("Animation_qofml"),
+"RESET": SubResource("Animation_4lkcv")
+}
+
+[node name="Spring" type="StaticBody3D"]
+collision_layer = 3
+script = ExtResource("1_nqerk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.54, 0, 0, 0, 0.36, 0, 0, 0, 1.54, 0, 0, 0)
+shape = SubResource("CylinderShape3D_qfho5")
+
+[node name="Metal" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.346603, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_frsda")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.55023, 0, 0, 0, 0.103211, 0, 0, 0, 1.55023, 0, 0.274873, 0)
+mesh = SubResource("CylinderMesh_q5ona")
+surface_material_override/0 = ExtResource("2_erxb0")
+
+[node name="SpringColl" type="Area3D" parent="Top"]
+transform = Transform3D(0.645066, 0, 0, 0, 9.68889, 0, 0, 0, 0.645066, 0, -2.66321, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top/SpringColl"]
+transform = Transform3D(1.26904, 0, 0, 0, 0.0350309, 0, 0, 0, 1.26904, 0, 0.411925, 0)
+shape = SubResource("CylinderShape3D_cadyv")
+
+[node name="SpringAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_te7hk")
+}

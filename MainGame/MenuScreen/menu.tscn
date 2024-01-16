@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://q1e5bckybdah"]
+
+[ext_resource type="Script" path="res://MainGame/MenuScreen/menu.gd" id="1_no0a4"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_no0a4")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 486.0
+offset_top = 315.0
+offset_right = 647.0
+offset_bottom = 365.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 30
+text = "Play Demo"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 286.0
+offset_top = 54.0
+offset_right = 852.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 50
+text = "Open Carrotus 3D"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://df71fmmnvb6my"]
+
+[ext_resource type="Texture2D" uid="uid://cuh71mw1vk7mm" path="res://MainGame/UI/LevelUI/LevelUIIcons/anim0019.gif" id="1_6fiq3"]
+[ext_resource type="Texture2D" uid="uid://sd0b8qncto6a" path="res://MainGame/UI/LevelUI/LevelUIIcons/anim0018.gif" id="1_ameh4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc4e3"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="Theme" id="Theme_xum25"]
+LineEdit/colors/font_uneditable_color = Color(0.87451, 0.87451, 0.87451, 1)
+LineEdit/styles/focus = SubResource("StyleBoxFlat_wc4e3")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_wc4e3")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_wc4e3")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j254k"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 0.0862745)
+
+[node name="CanvasLevelUI" type="CanvasLayer"]
+
+[node name="LevelUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00607639
+anchor_top = 0.0108025
+anchor_right = 0.213541
+anchor_bottom = 0.0925926
+theme_override_font_sizes/font_size = 30
+text = "000000000000"
+metadata/_edit_use_anchors_ = true
+
+[node name="WeaponBox" type="HSplitContainer" parent="LevelUI"]
+layout_mode = 0
+anchor_left = 0.902778
+anchor_top = 0.921296
+anchor_right = 0.989583
+anchor_bottom = 0.986111
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="WeaponTexture" type="TextureRect" parent="LevelUI/WeaponBox"]
+layout_mode = 2
+texture = ExtResource("1_6fiq3")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="LevelUI/WeaponBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x ∞"
+
+[node name="CharacterHealthInfo" type="HSplitContainer" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00520833
+anchor_top = 0.905864
+anchor_right = 0.095241
+anchor_bottom = 0.987845
+offset_right = -21.7176
+offset_bottom = -11.1237
+scale = Vector2(1.26485, 1.26485)
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterIcon" type="TextureRect" parent="LevelUI/CharacterHealthInfo"]
+layout_mode = 2
+texture = ExtResource("1_ameh4")
+expand_mode = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LivesCounter" type="Label" parent="LevelUI/CharacterHealthInfo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "x3"
+vertical_alignment = 1
+
+[node name="HeartsCounter" type="LineEdit" parent="LevelUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.881944
+anchor_top = 0.00462963
+anchor_right = 0.997396
+anchor_bottom = 0.0694444
+grow_horizontal = 0
+theme = SubResource("Theme_xum25")
+text = "Hearts x5"
+alignment = 1
+editable = false
+selecting_enabled = false
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinsCounter" type="Label" parent="LevelUI"]
+layout_mode = 0
+anchor_left = 0.00694444
+anchor_top = 0.820988
+anchor_right = 0.104167
+anchor_bottom = 0.885802
+theme_override_font_sizes/font_size = 30
+text = "0 Coins "
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="LevelUI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 74.0
+offset_right = 355.0
+offset_bottom = 424.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_j254k")
+text = "Controls : 
+
+WASD for movement
+
+Space for jump
+
+Left mouse button for shooting
+
+Right mouse button for camera movement
+
+Q for running
+
+Space then S for buttstomp"

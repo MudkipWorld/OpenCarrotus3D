@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://bixphfhf6n33p"]
+
+[ext_resource type="Script" path="res://MainGame/Characters/Enemies/TestEnemy/test_turtle.gd" id="1_y2p5a"]
+[ext_resource type="Resource" uid="uid://46g00hgr34ce" path="res://MainGame/Characters/Enemies/EnemyRes/EnemyResources.tres" id="2_6udgb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ania8"]
+radius = 0.9
+height = 2.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fm1xj"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dw4m"]
+albedo_color = Color(0.427451, 0.32549, 0.54902, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4n35i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pujtx"]
+albedo_color = Color(0.556863, 0.717647, 0.341176, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_463rv"]
+radius = 1.0
+height = 2.5
+
+[node name="TestTurtle" type="CharacterBody3D"]
+collision_layer = 6
+script = ExtResource("1_y2p5a")
+metadata/EnemyInfo = ExtResource("2_6udgb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.187738, 0.197757)
+shape = SubResource("CapsuleShape3D_ania8")
+
+[node name="TurtlePlaceholder" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.886122, 0, 0, 0, -4.37114e-08, -0.619613, 0, 1, -2.70841e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_fm1xj")
+surface_material_override/0 = SubResource("StandardMaterial3D_3dw4m")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.441291, 0, 0, 0, -1.70928e-08, 0.391038, 0, -0.631101, -2.75863e-08, -0.576369, -0.542631, 0.582854)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.717111, 0, 0, 0, 0.149105, 0.552934, 0, -0.613234, 0.134443, 0.0434555, 0.917973, -0.417808)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.717111, 0, 0, 0, 0.492299, -0.1305, 0, 0.0610574, 1.05221, 0.0434555, 1.21948, -1.26105)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.441291, 0, 0, 0, -1.70928e-08, 0.391038, 0, -0.631101, -2.75863e-08, 0.624465, 0.444598, 0.582854)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.441291, 0, 0, 0, -1.70928e-08, 0.391038, 0, -0.631101, -2.75863e-08, -0.576369, 0.444598, 0.582854)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TurtlePlaceholder"]
+transform = Transform3D(0.441291, 0, 0, 0, -1.70928e-08, 0.391038, 0, -0.631101, -2.75863e-08, 0.624465, -0.542631, 0.582854)
+mesh = SubResource("CapsuleMesh_4n35i")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pujtx")
+
+[node name="RayCast3D" type="RayCast3D" parent="TurtlePlaceholder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.05472, 0.430387)
+target_position = Vector3(0, -2.5, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+navigation_layers = 7
+avoidance_enabled = true
+height = 3.16
+radius = 5.54
+neighbor_distance = 121.94
+use_3d_avoidance = true
+avoidance_layers = 7
+avoidance_mask = 7
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="EnemyColl" type="Area3D" parent="."]
+collision_layer = 7
+
+[node name="EnemyAreaColl" type="CollisionShape3D" parent="EnemyColl"]
+transform = Transform3D(1.22854, 0, 0, 0, -4.96075e-08, -1.27272, 0, 1.13489, -5.56323e-08, 0, 0.224619, 0.117018)
+shape = SubResource("CapsuleShape3D_463rv")
+
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]

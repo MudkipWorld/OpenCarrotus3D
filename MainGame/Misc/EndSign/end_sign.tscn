@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhtitdggwgb5t"]
+
+[ext_resource type="Script" path="res://MainGame/Misc/EndSign/end_sign.gd" id="1_6byhf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2ty0"]
+size = Vector3(1.5, 2, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ja4ut"]
+size = Vector3(1.5, 1, 0.4)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vh7af"]
+top_radius = 0.2
+bottom_radius = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6e21u"]
+size = Vector3(2, 2.5, 1)
+
+[node name="EndSign" type="Node3D"]
+script = ExtResource("1_6byhf")
+
+[node name="StaticColl" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticColl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993837, 0)
+shape = SubResource("BoxShape3D_r2ty0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35215, 0)
+mesh = SubResource("BoxMesh_ja4ut")
+skeleton = NodePath("../StaticColl")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.352148, 0)
+mesh = SubResource("CylinderMesh_vh7af")
+skeleton = NodePath("../../StaticColl")
+
+[node name="EndColl" type="Area3D" parent="."]
+collision_layer = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndColl"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.977729, 0)
+shape = SubResource("BoxShape3D_6e21u")
+
+[connection signal="area_entered" from="EndColl" to="." method="_on_end_coll_area_entered"]

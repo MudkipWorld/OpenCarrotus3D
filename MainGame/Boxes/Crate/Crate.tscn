@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://b14gltuupxexw"]
+
+[ext_resource type="PackedScene" uid="uid://du042mywjnwvm" path="res://MainGame/Boxes/Crate/CrateMesh.glb" id="1_hl02m"]
+[ext_resource type="Script" path="res://addons/destruction/destruction.gd" id="3_a7ndj"]
+[ext_resource type="PackedScene" uid="uid://drwmv1yi2qbee" path="res://MainGame/Boxes/Crate/Cratebroken.tscn" id="4_orl4x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1nlou"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0x4ar"]
+albedo_color = Color(0.564706, 0.478431, 0.462745, 1)
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.210224
+
+[sub_resource type="BoxMesh" id="BoxMesh_dwytp"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_0x4ar")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxq1c"]
+
+[node name="Crate" type="RigidBody3D"]
+mass = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.74925, 0, 0, 0, 1.74925, 0, 0, 0, 1.74925, 0, 0, 0)
+shape = SubResource("BoxShape3D_1nlou")
+
+[node name="CrateMesh" parent="." instance=ExtResource("1_hl02m")]
+transform = Transform3D(1.94856, 0, 0, 0, 1.94856, 0, 0, 0, 1.94856, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.74925, 0, 0, 0, 1.74925, 0, 0, 0, 1.74925, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_dwytp")
+
+[node name="ObjColl" type="Area3D" parent="."]
+transform = Transform3D(1.74925, 0, 0, 0, 1.74925, 0, 0, 0, 1.74925, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjColl"]
+shape = SubResource("BoxShape3D_qxq1c")
+
+[node name="Destruction" type="Node" parent="." node_paths=PackedStringArray("shard_container")]
+script = ExtResource("3_a7ndj")
+fragmented = ExtResource("4_orl4x")
+shard_container = NodePath("../..")
+collision_layer = 2
+collision_mask = 3

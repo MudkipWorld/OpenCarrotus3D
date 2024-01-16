@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://cuh71mw1vk7mm"
+path="res://.godot/imported/anim0019.gif-325a1bb3506f52415faef7bda14b722d.tres"
+
+[deps]
+
+source_file="res://MainGame/UI/LevelUI/LevelUIIcons/anim0019.gif"
+dest_files=["res://.godot/imported/anim0019.gif-325a1bb3506f52415faef7bda14b722d.tres"]
+
+[params]
+

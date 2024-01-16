@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlij7kcg7pts1"]
+
+[ext_resource type="Script" path="res://MainGame/Weapons/TestWeapon/test_gun.gd" id="1_tr660"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq38t"]
+albedo_color = Color(0, 0.360784, 0.615686, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjsia"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfypa"]
+albedo_color = Color(0, 0.360784, 0.615686, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haygt"]
+albedo_color = Color(0.854902, 0, 0.227451, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ujf6n"]
+material = SubResource("StandardMaterial3D_haygt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e303h"]
+albedo_color = Color(0, 0.360784, 0.615686, 1)
+
+[node name="TestGun" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_tr660")
+
+[node name="BulletSpawn" type="CSGCylinder3D" parent="."]
+transform = Transform3D(8.85142e-16, 2.02497e-08, -0.463259, 0.463259, -2.02497e-08, 1.87051e-22, -2.02497e-08, -0.463259, -2.02497e-08, -0.0794909, 0.162739, -1.00445)
+material = SubResource("StandardMaterial3D_sq38t")
+
+[node name="Ray" type="RayCast3D" parent="BulletSpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -8.47033e-22, 0, 1, 5.96046e-08, 0.999292, 4.47035e-08)
+target_position = Vector3(0, 5, 0)
+hit_back_faces = false
+debug_shape_thickness = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.0794909, 0.162739, 0)
+mesh = SubResource("CylinderMesh_vjsia")
+surface_material_override/0 = SubResource("StandardMaterial3D_nfypa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1.02067, 0, 2.75286e-21, 3.55271e-15, 0.0574695, 3.55271e-15, 2.32934e-21, 0, 1.02067, 2.98023e-08, 0.73163, 2.98023e-08)
+mesh = SubResource("CylinderMesh_ujf6n")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.96046e-08, 0.902717, 5.96046e-08)
+material = SubResource("StandardMaterial3D_e303h")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98023e-08, -0.9188, -1.49012e-08)
+material = SubResource("StandardMaterial3D_e303h")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="MeshInstance3D/CSGSphere3D2"]
+transform = Transform3D(-1.91039e-08, 0.437045, 1.91039e-08, -0.437045, -1.91039e-08, -1.91039e-08, -1.91039e-08, -1.91039e-08, 0.437045, -0.700383, 0.503788, -2.98023e-08)
+material = SubResource("StandardMaterial3D_e303h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2

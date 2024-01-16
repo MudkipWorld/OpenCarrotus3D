@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bretvu3orawxs"]
+
+[ext_resource type="Script" path="res://MainGame/Characters/Players/PlayerRes/PlayerResources.gd" id="1_tbit7"]
+
+[resource]
+script = ExtResource("1_tbit7")
+hearts = 5
+health = 5
+lives = 5

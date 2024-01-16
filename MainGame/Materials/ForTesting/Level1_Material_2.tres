@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://myaeb5mnl7q3"]
+
+[ext_resource type="Shader" path="res://MainGame/Materials/ForTesting/terrain-shader/Terrain.gdshader" id="1_1eijp"]
+[ext_resource type="Texture2D" uid="uid://bmve6tc5v1da2" path="res://MainGame/Materials/ForTesting/RocksTexture.png" id="3_b3aki"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1eijp")
+shader_parameter/WallTexScale = 1.0
+shader_parameter/WallColor = Color(0.384314, 0.317647, 0.203922, 1)
+shader_parameter/TopTexScale = 1.0
+shader_parameter/TopColor = Color(0.717647, 0.619608, 0.45098, 1)
+shader_parameter/BlendValues = Vector4(2, 0, 0, 1)
+shader_parameter/WallTex = ExtResource("3_b3aki")
+shader_parameter/TopTex = ExtResource("3_b3aki")

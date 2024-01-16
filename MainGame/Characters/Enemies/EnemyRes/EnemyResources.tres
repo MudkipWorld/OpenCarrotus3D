@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://46g00hgr34ce"]
+
+[ext_resource type="Script" path="res://MainGame/Characters/Enemies/EnemyRes/EnemyResources.gd" id="1_vnjy4"]
+
+[resource]
+script = ExtResource("1_vnjy4")
+health = 5
+atk_damage = 1
